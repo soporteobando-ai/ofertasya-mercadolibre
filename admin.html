@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración | OfertasYA</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased min-h-screen">
+
+  <header class="bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🛠️</span>
+        <span class="font-bold">Panel de administración — OfertasYA</span>
+      </div>
+      <a href="index.html" class="text-sm text-blue-300 hover:text-blue-200 transition">← Volver al sitio</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Aviso -->
+    <div class="bg-blue-50 border border-blue-200 text-blue-800 text-sm rounded-lg p-4 mb-6">
+      Los cambios que hagas acá se guardan en <strong>este navegador</strong> (localStorage) y se reflejan
+      automáticamente en el sitio público. Para llevarlos a otra computadora o publicarlos en tu hosting,
+      usá <strong>Exportar JSON</strong> y reemplazá el archivo <code class="bg-blue-100 px-1 rounded">js/products.json</code>
+      antes de desplegar.
+    </div>
+
+    <!-- Acciones globales -->
+    <div class="flex flex-wrap items-center gap-3 mb-8">
+      <button id="btn-new" type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition">
+        + Agregar producto
+      </button>
+      <button id="btn-export" type="button" class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-lg transition">
+        ⬇ Exportar JSON
+      </button>
+      <label class="bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-lg transition cursor-pointer">
+        ⬆ Importar JSON
+        <input id="import-file" type="file" accept="application/json" class="hidden" />
+      </label>
+      <button id="btn-reset" type="button" class="text-red-600 hover:text-red-700 text-sm font-medium ml-auto">
+        Restaurar catálogo de fábrica
+      </button>
+    </div>
+
+    <!-- ===================== FORMULARIO ===================== -->
+    <section id="form-section" class="hidden bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
+      <h2 id="form-title" class="text-lg font-bold mb-4">Agregar producto</h2>
+
+      <form id="product-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input type="hidden" id="f-id" />
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium mb-1">Título *</label>
+          <input id="f-title" required type="text" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Categoría *</label>
+          <input id="f-category" required list="category-options" type="text" placeholder="Ej: Tecnología" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          <datalist id="category-options"></datalist>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Precio (ARS) *</label>
+          <input id="f-price" required type="number" min="0" step="1" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium mb-1">Descripción breve *</label>
+          <textarea id="f-description" required rows="2" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium mb-1">URL de imagen *</label>
+          <div class="flex gap-3 items-start">
+            <input id="f-image" required type="url" placeholder="https://..." class="flex-1 rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <img id="f-image-preview" alt="Vista previa" class="w-16 h-16 object-cover rounded-lg border border-gray-200 hidden" />
+          </div>
+          <p class="text-xs text-gray-500 mt-1">
+            Tip: en la página real de Mercado Libre, clic derecho sobre la foto del producto → "Copiar dirección de la imagen".
+          </p>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium mb-1">Link de afiliado de Mercado Libre *</label>
+          <input id="f-affiliate" required type="url" placeholder="https://www.mercadolibre.com.ar/..." class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Calificación (0 a 5)</label>
+          <input id="f-rating" type="number" min="0" max="5" step="0.1" value="4.5" class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div class="flex items-center gap-6 mt-6">
+          <label class="inline-flex items-center gap-2 text-sm font-medium">
+            <input id="f-featured" type="checkbox" class="h-4 w-4 rounded border-gray-300" />
+            Destacado
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm font-medium">
+            <input id="f-active" type="checkbox" checked class="h-4 w-4 rounded border-gray-300" />
+            Visible en el sitio
+          </label>
+        </div>
+
+        <div class="sm:col-span-2 flex gap-3 mt-2">
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition">
+            Guardar
+          </button>
+          <button type="button" id="btn-cancel" class="bg-gray-100 hover:bg-gray-200 px-5 py-2 rounded-lg transition">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===================== LISTADO ===================== -->
+    <section class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600 text-left">
+            <tr>
+              <th class="px-4 py-3">Producto</th>
+              <th class="px-4 py-3">Categoría</th>
+              <th class="px-4 py-3">Precio</th>
+              <th class="px-4 py-3">Rating</th>
+              <th class="px-4 py-3">Visible</th>
+              <th class="px-4 py-3">Destacado</th>
+              <th class="px-4 py-3 text-right">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="product-table-body" class="divide-y divide-gray-100"></tbody>
+        </table>
+      </div>
+      <p id="empty-catalog" class="hidden text-center text-gray-500 py-10">
+        No hay productos cargados todavía. Agregá el primero con el botón de arriba.
+      </p>
+    </section>
+  </main>
+
+  <script src="js/admin.js" type="module"></script>
+</body>
+</html>

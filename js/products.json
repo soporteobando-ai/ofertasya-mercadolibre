@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "title": "Auriculares Bluetooth Inalámbricos con Cancelación de Ruido",
+    "category": "Tecnología",
+    "description": "Sonido envolvente, batería de larga duración y estuche de carga rápida. Ideales para trabajo remoto y viajes.",
+    "price": 89990,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://www.mercadolibre.com.ar/auriculares-bluetooth-con-cancelacion-de-ruido-activa-anc887-color-negro/p/MLA27172207",
+    "rating": 4.8,
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Robot Aspiradora Inteligente Wi-Fi 3 en 1",
+    "category": "Hogar",
+    "description": "Limpieza automática programable desde app, sensores anti-caídas y base de carga automática.",
+    "price": 249990,
+    "image": "https://images.unsplash.com/photo-1653990480360-31a12ce9723e?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://www.mercadolibre.com.ar/aspiradora-robot-inteligente-wi-fi-3-en-1-positivo-casa-inteligente-pra100-color-blanco/p/MLA23491467",
+    "rating": 4.6,
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Hábitos Atómicos - James Clear",
+    "category": "Libros",
+    "description": "Un método sencillo y comprobado para desarrollar buenos hábitos y eliminar los malos.",
+    "price": 18500,
+    "image": "https://images.unsplash.com/photo-1721977645418-2699a3d21ecf?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://articulo.mercadolibre.com.ar/MLA-1139543791-libro-habitos-atomicos-james-clear-_JM",
+    "rating": 4.9,
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Smartwatch Deportivo con GPS y Monitor Cardíaco",
+    "category": "Tecnología",
+    "description": "Resistente al agua, múltiples modos deportivos y notificaciones inteligentes en pantalla a color.",
+    "price": 129990,
+    "image": "https://images.unsplash.com/photo-1696660760822-833afde62f94?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://articulo.mercadolibre.com.ar/MLA-896753391-reloj-smart-watch-pulsometro-monitor-cardiaco-serie-4-t-go-_JM",
+    "rating": 4.7,
+    "featured": true
+  },
+  {
+    "id": 5,
+    "title": "Set de Ollas Antiadherentes con Tapa de Vidrio",
+    "category": "Hogar",
+    "description": "Aptas para todo tipo de cocinas, mangos ergonómicos y superficie antiadherente resistente.",
+    "price": 74990,
+    "image": "https://images.unsplash.com/photo-1604762432718-b0cd3db01b18?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://articulo.mercadolibre.com.ar/MLA-1625100870-set-de-ollas-enlozadas-antiadherentes-3-piezas-tapa-vidrio-_JM",
+    "rating": 4.5,
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Zapatillas Running Ultra Livianas",
+    "category": "Deportes",
+    "description": "Amortiguación de alto rendimiento, malla transpirable y suela de goma antideslizante.",
+    "price": 59990,
+    "image": "https://images.unsplash.com/photo-1578314921455-34dd4626b38d?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://articulo.mercadolibre.com.ar/MLA-1102372955-zapatillas-running-hombre-deportivas-ultra-livianas-comodas-_JM",
+    "rating": 4.4,
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "Kit de Limpieza Facial Doble Coreana",
+    "category": "Belleza",
+    "description": "Rutina de doble limpieza (oil cleanser + water cleanser) para pieles sensibles, método coreano.",
+    "price": 42990,
+    "image": "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://articulo.mercadolibre.com.ar/MLA-1417499783-kit-doble-limpieza-coreana-pieles-sensibles-libra-_JM",
+    "rating": 4.5,
+    "featured": true
+  },
+  {
+    "id": 8,
+    "title": "Parlante Bluetooth Portátil Sumergible",
+    "category": "Tecnología",
+    "description": "Sonido potente, certificación de resistencia al agua IPX7 y diseño compacto para exteriores.",
+    "price": 54990,
+    "image": "https://images.unsplash.com/photo-1564975472884-a6e9fd24e967?w=800&q=80&auto=format&fit=crop",
+    "affiliateUrl": "https://articulo.mercadolibre.com.ar/MLA-780580065-parlante-jbl-go-2-portatil-sumergible-bluetooth-original-usa-_JM",
+    "rating": 4.6,
+    "featured": false
+  }
+]
