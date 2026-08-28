@@ -8,6 +8,7 @@ Sitio estático (HTML + Tailwind CSS vía CDN + JavaScript vanilla) para mostrar
 web_Ventas_mercadolibre/
 ├── index.html          # Página principal (navbar, hero, filtros, grid, footer)
 ├── admin.html           # Panel de administración: agregar/editar/ocultar productos
+├── middleware.js        # Protege /admin.html con usuario/contraseña (solo corre en Vercel)
 ├── css/
 │   └── style.css       # Estilos complementarios a Tailwind (animaciones, line-clamp, etc.)
 ├── js/
@@ -90,26 +91,36 @@ npx serve
 ### Opción 3: Extensión "Live Server" de VS Code
 Instalá la extensión **Live Server**, clic derecho sobre `index.html` → "Open with Live Server".
 
-## Cómo desplegarlo gratis
+⚠️ Estos tres servidores locales sirven los archivos tal cual, sin ejecutar `middleware.js` — en tu máquina
+`admin.html` va a abrir sin pedir contraseña. Eso es normal y esperado (sos vos, en tu propia compu). La
+protección con usuario/contraseña solo se activa cuando el sitio está desplegado en Vercel (ver más abajo).
 
-### GitHub Pages
-1. Subí esta carpeta a un repositorio de GitHub.
-2. Andá a **Settings → Pages**.
-3. En "Source" elegí la rama `main` y la carpeta `/root`.
-4. Guardá; en unos minutos el sitio queda publicado en `https://tu-usuario.github.io/tu-repo/`.
+## Cómo desplegarlo gratis (con el panel admin protegido)
 
-### Vercel
-1. Creá una cuenta en [vercel.com](https://vercel.com).
-2. "Add New Project" → importá el repositorio (o arrastrá la carpeta con `vercel` CLI).
-3. Framework preset: **Other** (sitio estático). No requiere build.
-4. Deploy. Vercel te da una URL pública al instante.
+El repositorio ya vive en GitHub: **github.com/soporteobando-ai/ofertasya-mercadolibre**. GitHub Pages quedó
+**desactivado a propósito**, porque es hosting 100% estático y no puede ejecutar el chequeo de contraseña del
+panel — cualquiera que encontrara la URL de `admin.html` podría editarlo. El hosting oficial ahora es **Vercel**,
+que sí ejecuta el archivo `middleware.js` (Edge Middleware) y protege `/admin.html` con usuario y contraseña
+verificados en el servidor.
 
-### Netlify
-1. Creá una cuenta en [netlify.com](https://netlify.com).
-2. "Add new site" → "Deploy manually" → arrastrá la carpeta del proyecto.
-3. Listo, obtenés una URL pública (podés conectar un dominio propio después).
+### Desplegar en Vercel (recomendado, gratis)
+1. Entrá a [vercel.com](https://vercel.com) e iniciá sesión **con tu cuenta de GitHub** (un clic, sin crear password nueva).
+2. **Add New... → Project** → elegí el repo `ofertasya-mercadolibre`.
+3. Framework preset: **Other**. No hace falta build command ni output directory — dejalo todo por defecto.
+4. Antes de hacer clic en "Deploy", abrí **Environment Variables** y agregá:
+   - `ADMIN_USER` → el usuario que quieras (ej: `ofertasya-admin`)
+   - `ADMIN_PASSWORD` → una contraseña fuerte (te generé una abajo)
+5. Deploy. Vercel te da una URL del tipo `https://ofertasya-mercadolibre.vercel.app`.
+6. Al entrar a `/admin.html` en esa URL, el navegador va a pedir usuario y contraseña (HTTP Basic Auth) antes de
+   mostrar la página. Sin las credenciales correctas, el servidor responde `401` y nunca llega a servir el HTML.
 
-En los tres casos no hace falta configurar build command ni output directory: es un sitio 100% estático.
+Si más adelante cambiás la contraseña, hacelo en **Project Settings → Environment Variables** en Vercel (no en el
+código) y volvé a desplegar (Vercel lo hace solo con un "Redeploy").
+
+### Netlify (alternativa)
+También podés usar Netlify Identity + Edge Functions para lograr el mismo tipo de protección real, pero requiere
+adaptar `middleware.js` a la sintaxis de Netlify Edge Functions. Si preferís Netlify en vez de Vercel, avisame y
+te adapto el archivo.
 
 ## Personalización rápida
 
